@@ -1,0 +1,23 @@
+/*
+ * Per-key RGB: keymap position of each LED in this half's chain (index = LED number).
+ * Same PCB as the left, mirrored: the chain starts at the outer (right-hand) column.
+ * 255 = LED not under a key; it keeps showing the normal effect.
+ */
+/ {
+    underglow-layer {
+        compatible = "zmk,underglow-layer";
+        pixel-lookup
+            = <255>                                    // 0     indicator
+            , <255>, <255>, <255>, <255>, <255>, <255> // 1-6   underglow
+            , <59>                                     // 7     thumb (outer)
+            , <49>, <35>, <23>, <11>                   // 8-11  col 0 (outer), up
+            , <10>, <22>, <34>, <48>                   // 12-15 col 1, down
+            , <58>, <57>                               // 16-17 thumbs
+            , <47>, <33>, <21>, <9>                    // 18-21 col 2, up
+            , <8>, <20>, <32>, <46>                    // 22-25 col 3, down
+            , <56>, <55>                               // 26-27 thumbs (inner)
+            , <45>, <31>, <19>, <7>                    // 28-31 col 4, up
+            , <6>, <18>, <30>, <44>                    // 32-35 col 5 (inner), down
+            ;
+    };
+};

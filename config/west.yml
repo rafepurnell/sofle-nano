@@ -2,10 +2,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: garethbradley
+      url-base: https://github.com/garethbradley
   projects:
+    # ZMK v0.3 + darknao's per-key RGB (rgb-layer-24.12) + garethbradley's layer overlay,
+    # split animation sync and effect preview. Branch: garethbradley/zmk@maizeglow
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: garethbradley
+      revision: 23a44a6a93894aac91bc455899c8e6aee3fab038
       import: app/west.yml
   self:
     path: config

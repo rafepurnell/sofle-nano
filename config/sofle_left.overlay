@@ -1,0 +1,24 @@
+/*
+ * Per-key RGB: keymap position of each LED in this half's chain (index = LED number).
+ * Sofle RGB v2.1 chain: indicator, 6 underglow, then per-key LEDs snaking up/down the
+ * columns from the outer column inwards, with thumb LEDs between columns.
+ * 255 = LED not under a key; it keeps showing the normal effect.
+ */
+/ {
+    underglow-layer {
+        compatible = "zmk,underglow-layer";
+        pixel-lookup
+            = <255>                                    // 0     indicator
+            , <255>, <255>, <255>, <255>, <255>, <255> // 1-6   underglow
+            , <50>                                     // 7     thumb (outer)
+            , <36>, <24>, <12>, <0>                    // 8-11  col 0 (outer), up
+            , <1>, <13>, <25>, <37>                    // 12-15 col 1, down
+            , <51>, <52>                               // 16-17 thumbs
+            , <38>, <26>, <14>, <2>                    // 18-21 col 2, up
+            , <3>, <15>, <27>, <39>                    // 22-25 col 3, down
+            , <53>, <54>                               // 26-27 thumbs (inner)
+            , <40>, <28>, <16>, <4>                    // 28-31 col 4, up
+            , <5>, <17>, <29>, <41>                    // 32-35 col 5 (inner), down
+            ;
+    };
+};
