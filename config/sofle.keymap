@@ -24,9 +24,21 @@
     };
 };
 
-// Hold S OFF for 2s to turn off, so it can't be hit by accident; any key turns it back on
+// Power toggle: hold Lower + Raise for 2s to turn off; press Lower + Raise to turn back on
+// (Lower wakes the left half, Raise wakes the right - see sofle_left/right.overlay)
 &soft_off {
     hold-time-ms = <2000>;
+};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        power_off {
+            timeout-ms = <80>;
+            key-positions = <53 56>; // Lower, Raise
+            bindings = <&soft_off>;
+        };
+    };
 };
 
 / {
