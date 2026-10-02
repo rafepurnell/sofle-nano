@@ -8,53 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-/*
- * Per-key RGB colour maps (garethbradley/zmk fork), drawn over the current underglow effect.
- * Base has no map, so it shows the plain effect. One entry per key position, in keymap order;
- * the two middle entries on the fourth row are the encoder presses (no LED under them).
- * &trans lets the effect show through; UG_OFF turns a key dark (&none isn't built on the right half).
- * LED -> key position lookup tables are in sofle_left.overlay / sofle_right.overlay.
- */
-#define LOWER 1
-#define RAISE 2
-
-#define UG_OFF   &ug 0x000000
-#define UG_NAV   &ug 0x00FFFF  // cyan:      arrows, PgUp/PgDn
-#define UG_NUM   &ug 0xFFC000  // yellow:    digits
-#define UG_SYM   &ug 0x8000FF  // purple:    symbols, brackets
-#define UG_FN    &ug 0x0000FF  // blue:      F-keys
-#define UG_EDIT  &ug 0xFF5000  // orange:    Tab, Ins, Del, Bksp, undo/cut/copy/paste
-#define UG_MOD   &ug 0x404040  // dim white: Ctrl, Shift, Alt
-#define UG_SYS   &ug 0x00FF00  // green:     Caps, Print Screen
-#define UG_CONN  &ug 0xFFFFFF  // white:     Bluetooth profiles
-#define UG_DANGR &ug 0xFF0000  // red:       clear pairings, bootloader, soft off
-
-/ {
-    underglow-layer {
-        lower_rgb {
-            layer-id = <LOWER>;
-            bindings = <
-UG_SYM  UG_FN   UG_FN   UG_FN   UG_FN   UG_FN                   UG_FN   UG_FN   UG_FN   UG_FN   UG_FN   UG_FN
-UG_EDIT UG_NUM  UG_NUM  UG_NUM  UG_NUM  UG_NUM                  UG_NUM  UG_NUM  UG_NUM  UG_NUM  UG_NUM  UG_FN
-UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM                  UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM
-UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM  &trans  &trans  UG_SYM  UG_SYM  UG_SYM  UG_SYM  UG_SYM  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        raise_rgb {
-            layer-id = <RAISE>;
-            bindings = <
-UG_DANGR UG_CONN UG_CONN UG_CONN UG_CONN UG_CONN                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans   UG_EDIT UG_SYS  UG_SYS  &trans  &trans                   UG_NAV  &trans  UG_NAV  &trans  UG_NUM  &trans
-&trans   UG_MOD  UG_MOD  UG_MOD  &trans  UG_SYS                   UG_NAV  UG_NAV  UG_NAV  UG_NAV  UG_EDIT UG_EDIT
-&trans   UG_EDIT UG_EDIT UG_EDIT UG_EDIT &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  UG_DANGR
-                 UG_DANGR &trans &trans  &trans  &trans  &trans   &trans  &trans  &trans  UG_DANGR
-            >;
-        };
-    };
-};
-
 / {
     keymap {
         compatible = "zmk,keymap";
