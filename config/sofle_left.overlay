@@ -1,0 +1,7 @@
+/*
+ * No LEDs are fitted. The Sofle shield puts the WS2812 data line on spi3 MOSI (P0.06),
+ * which is also the nice!view chip select (pro_micro 1), so turn the LED SPI bus off.
+ */
+&spi3 {
+    status = "disabled";
+};
