@@ -5,3 +5,11 @@
 &spi3 {
     status = "disabled";
 };
+
+/* Wake from soft off (&soft_off) by pressing any key on this half */
+/ {
+    soft_off_wakers {
+        compatible = "zmk,soft-off-wakeup-sources";
+        wakeup-sources = <&kscan0>;
+    };
+};

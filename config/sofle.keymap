@@ -24,6 +24,11 @@
     };
 };
 
+// Hold S OFF for 2s to turn off, so it can't be hit by accident; any key turns it back on
+&soft_off {
+    hold-time-ms = <2000>;
+};
+
 / {
     keymap {
         compatible = "zmk,keymap";
